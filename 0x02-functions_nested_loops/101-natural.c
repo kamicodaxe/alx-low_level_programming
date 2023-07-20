@@ -1,4 +1,4 @@
-include <stdio.h>
+#include <stdio.h>
 
 /**
  * main TODO
@@ -17,6 +17,7 @@ int main(void)
 			b = a + b;
 		}
 	}
+	
 	printf("%d\n", b);
 	return (0);
 }
