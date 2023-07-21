@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * print_diagonal - prints diagonal.
  * @n: int, diagonal length
@@ -12,6 +11,12 @@ void print_diagonal(int n)
 	const char DIAG_CHAR = '\\';
 	const int DIAG_LEN = n;
 	int space_len = 0;
+
+	if (n <= 0)
+	{
+		_putchar(NEW_LINE);
+		return;
+	}
 
 	while (n > 0)
 	{
