@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * print_triangle - prints triangle, ends with a new line.
  * @size: int, size of triangle
@@ -14,7 +15,7 @@ void print_triangle(int size)
 		return;
 	}
 
-	for (row = 0; row <= size; row++)
+	for (row = 1; row <= size; row++)
 	{
 		spaces_to_print = size - row;
 		chars_to_print = row;
