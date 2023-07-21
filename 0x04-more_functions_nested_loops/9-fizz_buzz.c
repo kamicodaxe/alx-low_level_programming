@@ -29,7 +29,7 @@ int main(void)
 			printf("buzz");
 		}
 
-		if (i != SIZE)
+		if (i < SIZE)
 		{
 			printf(" ");
 		}
