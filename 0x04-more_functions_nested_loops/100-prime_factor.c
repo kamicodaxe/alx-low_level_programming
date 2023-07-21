@@ -15,9 +15,9 @@ int main(void)
 		if (NUMBER % i == 0)
 		{
 			printf("%d", i);
+			printf("\n");
 			break;
 		}
 	}
-	printf("\n");
 	return (0);
 }
