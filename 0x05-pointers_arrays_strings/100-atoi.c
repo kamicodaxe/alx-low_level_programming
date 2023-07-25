@@ -7,25 +7,19 @@
  */
 int _atoi(char *s)
 {
-	int start = 0, i = 0, digit = 0, sign = 1, is_digit = 0;
+	int sign = 1, number = 0;
 
-	for (; s[i] != '\0'; i++)
-	{
-		is_digit = (s[i] >= '0' && s[i] <= '9') ? 1 : 0;
+	do {
+		if (*s == '-')
+			sign *= -1;
 
-		if (is_digit && !start)
-			start = i + 1;
+		else if (*s >= '0' && *s <= '9')
+			number = number * 10 + (*s - '0');
 
-		if (!is_digit && start)
+		else if (number > 0)
 			break;
+	} while (*s++);
 
-		if (is_digit && start)
-			digit = digit * 10 + (s[i] - '0');
-	}
-
-	if (start > 1 && s[start - 2] == '-')
-		sign = -1;
-
-	return (sign * digit);
+	return (number * sign);
 }
 
