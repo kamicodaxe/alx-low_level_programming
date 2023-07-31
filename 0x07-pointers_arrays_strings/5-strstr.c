@@ -21,7 +21,6 @@ int isSubString(char *start, char *needle)
 }
 
 
-
 /**
  * _strstr - locates a substring in string.
  * @haystack: Pointer to the string to be searched
@@ -32,6 +31,10 @@ int isSubString(char *start, char *needle)
 
 char *_strstr(char *haystack, char *needle)
 {
+
+	if (*needle == '\0')
+		return (haystack);
+
 	while (*haystack != '\0')
 	{
 		if (*haystack == *needle)
@@ -44,3 +47,4 @@ char *_strstr(char *haystack, char *needle)
 
 	return (NULL);
 }
+
