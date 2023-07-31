@@ -20,7 +20,7 @@ int hasChar(char *s, char c)
 
 
 /**
- * _strspn - Searches a string for any of a set of bytes.
+ * _strpbrk - Searches a string for any of a set of bytes.
  * @s: Pointer to the string to be searched
  * @accept: Pointer to the string containing bytes to be matched
  * Return: a pointer to the byte in s that matches one of the bytes in accept,
@@ -36,5 +36,5 @@ char *_strpbrk(char *s, char *accept)
 		s++;
 	}
 
-	return NULL;
+	return (NULL);
 }
