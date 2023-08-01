@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stddef.h>
 
 /**
  * isSubString - Checks if 'start' is actually the start of the matching
@@ -45,6 +44,6 @@ char *_strstr(char *haystack, char *needle)
 		haystack++;
 	}
 
-	return (NULL);
+	return ('\0');
 }
 
