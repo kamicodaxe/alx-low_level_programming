@@ -10,12 +10,12 @@
  */
 int isSubString(char *start, char *needle)
 {
-	while (*start == *needle)
+	int i = 0;
+
+	for (i = 0; start[i] == needle[i]; i++)
 	{
-		if (*needle == '\0')
+		if (needle[i] == '\0')
 			return (1);
-		start++;
-		needle++;
 	}
 	return (0);
 }
