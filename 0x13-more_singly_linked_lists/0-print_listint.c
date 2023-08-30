@@ -10,20 +10,14 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	const listint_t *current = malloc(sizeof(listint_t));
 	size_t count = 0;
 
-	if (h == NULL)
-		return (0);
-
-	current = h;
-	while (current)
+	while (h != NULL)
 	{
-		printf("%d\n", current->n);
-		current = current->next;
+		printf("%d\n", h->n);
+		h = h->next;
 		count++;
 	}
 
 	return (count);
-
 }
