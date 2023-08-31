@@ -35,9 +35,9 @@ unsigned int binary_to_uint(const char *b)
  *
  * Return: The result of number raised to the power of pow.
  */
-int compute_exponent(int base, unsigned int exponent)
+unsigned int compute_exponent(int base, unsigned int exponent)
 {
-	int results = 1;
+	unsigned int results = 1;
 
 	while (exponent--)
 	{
