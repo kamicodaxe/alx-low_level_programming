@@ -2,7 +2,6 @@
 #define MAIN_H
 /* HELPERS */
 int _putchar(char c);
-unsigned int compute_exponent(int base, unsigned int exponent);
 /* MAIN FUNCTIONS */
 unsigned int binary_to_uint(const char *b);
 void print_binary(unsigned long int n);
