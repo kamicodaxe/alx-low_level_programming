@@ -14,7 +14,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int i, j, len = strlen(b), dec_number = 0;
 	int temp;
 
-	if (b == NULL)
+	if (!b)
 		return (0);
 
 	for (i = 0, j = len - 1; i < len; i++, j--)
