@@ -39,8 +39,17 @@ int main(int argc, char **argv)
 
 	result = copy_file(src_fd, dest_fd);
 
-	close(src_fd);
-	close(dest_fd);
+	if (close(src_fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src_fd);
+		return (100);
+	}
+
+	if (close(dest_fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
+		return (100);
+	}
 
 	return (result);
 }
