@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		return (98);
 	}
 
-	dest_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	dest_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (dest_fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
