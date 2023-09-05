@@ -5,6 +5,16 @@
 #include <unistd.h>
 
 /**
+ * print_error - Print an error message to stderr.
+ * @message: The error message to print.
+ * @dest_fd: The file descriptor where the write operation failed.
+ */
+void print_error(int dest_fd, const char *message)
+{
+	dprintf(STDERR_FILENO, message, dest_fd);
+}
+
+/**
  * main - Copies the content of one file to another file.
  *
  * @argc: The number of command-line arguments.
@@ -51,7 +61,7 @@ int main(int argc, char **argv)
 		exit(100);
 	}
 
-	return(result);
+	return (result);
 }
 
 /**
@@ -81,7 +91,7 @@ int copy_file(int source_fd, int dest_fd)
 		if (bytes_written == -1 || bytes_written != bytes_read)
 		{
 			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't write to file descriptor %d\n", dest_fd);
+			print_error(dest_fd, "Error: Can't write to file descriptor %d\n");
 			exit(-1);
 		}
 	}
@@ -89,10 +99,10 @@ int copy_file(int source_fd, int dest_fd)
 	if (bytes_read == -1)
 	{
 		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't read from file descriptor %d\n", source_fd);
+		print_error(source_fd, "Error: Can't read from file descriptor %d\n");
 		exit(100);
 	}
 
 	free(buffer);
-	return(0);
+	return (0);
 }
