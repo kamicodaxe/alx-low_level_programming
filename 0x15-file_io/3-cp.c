@@ -19,14 +19,14 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		return (97);
+		exit(97);
 	}
 
 	src_fd = open(argv[1], O_RDONLY);
 	if (src_fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		return (98);
+		exit(98);
 	}
 
 	dest_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 		close(src_fd);
-		return (99);
+		exit(99);
 	}
 
 	result = copy_file(src_fd, dest_fd);
@@ -42,16 +42,16 @@ int main(int argc, char **argv)
 	if (close(src_fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src_fd);
-		return (100);
+		exit(100);
 	}
 
 	if (close(dest_fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
-		return (100);
+		exit(100);
 	}
 
-	return (result);
+	return(result);
 }
 
 /**
@@ -72,7 +72,7 @@ int copy_file(int source_fd, int dest_fd)
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Memory allocation failed\n");
-		return (-1);
+		exit(-1);
 	}
 
 	while ((bytes_read = read(source_fd, buffer, buffer_size)) > 0)
@@ -82,7 +82,7 @@ int copy_file(int source_fd, int dest_fd)
 		{
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't write to file descriptor %d\n", dest_fd);
-			return (-1);
+			exit(-1);
 		}
 	}
 
@@ -90,9 +90,9 @@ int copy_file(int source_fd, int dest_fd)
 	{
 		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't read from file descriptor %d\n", source_fd);
-		return (100);
+		exit(100);
 	}
 
 	free(buffer);
-	return (0);
+	return(0);
 }
