@@ -13,13 +13,13 @@
  */
 int naturalSqrt(int i, int num)
 {
-	if (i == 0)
+	if (i * i > num)
 		return (-1);
 
 	if (i * i == num)
 		return (i);
 
-	return (naturalSqrt(i - 1, num));
+	return (naturalSqrt(i + 1, num));
 }
 
 /**
@@ -41,5 +41,5 @@ int _sqrt_recursion(int n)
 	if (n == 1)
 		return (1);
 
-	return (naturalSqrt(n, n));
+	return (naturalSqrt(0, n));
 }
