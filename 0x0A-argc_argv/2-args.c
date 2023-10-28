@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 
-	while (argv++ && *argv != NULL)
-		printf("%s\n", *argv);
+	while (*argv != NULL)
+		printf("%s\n", *argv++);
 
 	return (0);
 }
