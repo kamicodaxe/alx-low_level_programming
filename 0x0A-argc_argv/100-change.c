@@ -12,7 +12,7 @@
 int main(int argc, char **argv)
 {
 	int cents = 0, i = 0, coins = 0;
-	int change[] = {25, 10, 5, 1, 0};
+	int change[] = {25, 10, 5, 2, 1, 0};
 
 	if (argc != 2)
 	{
@@ -21,6 +21,13 @@ int main(int argc, char **argv)
 	}
 
 	cents = atoi(*++argv);
+
+	if (cents < 0)
+	{
+		printf("0\n");
+		return (0);
+	}
+
 	while (change[i] != 0)
 	{
 		coins += cents / change[i];
