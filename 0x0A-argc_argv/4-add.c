@@ -30,6 +30,7 @@ int hasDigitsOnly(char *str)
 int main(int argc, char **argv)
 {
 	int sum = 0;
+	(void)argc;
 
 	while (argv++ && *argv != NULL)
 	{
