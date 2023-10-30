@@ -26,7 +26,7 @@ int **alloc_grid(int width, int height)
 	/* Alloc mem for grid cols */
 	grid = malloc(height * sizeof(int *));
 	if (grid == NULL)
-		free(grid);
+		return (NULL);
 
 	for (; rows < height; rows++)
 	{
