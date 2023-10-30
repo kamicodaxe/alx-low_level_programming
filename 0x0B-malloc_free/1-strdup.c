@@ -13,6 +13,9 @@ char *_strdup(char *str)
 	char *ptrstring;
 	size_t len = 0;
 
+	if (str == NULL)
+		return (NULL);
+
 	while (str[len] != '\0')
 		len++;
 
