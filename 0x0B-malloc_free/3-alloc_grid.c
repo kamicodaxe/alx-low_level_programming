@@ -36,14 +36,14 @@ int **alloc_grid(int width, int height)
 		{
 			/* Free rows and collumn, return null */
 			while (rows > 0)
-				free(grid[rows--]);
+				free(grid[--rows]);
 
 			free(grid);
 			return (NULL);
 		}
 
 		/* Initialize each entry to initv */
-		for (; cols < width; cols++)
+		for (cols = 0; cols < width; cols++)
 			grid[rows][cols] = initv;
 	}
 
