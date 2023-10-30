@@ -23,7 +23,7 @@ char *str_concat(char *s1, char *s2)
 		len2++;
 
 	/* Allocate memory for new string copy */
-	ptrstring_cpy = malloc((len1 + len2) * sizeof(char));
+	ptrstring_cpy = malloc((len1 + len2 + 1) * sizeof(char));
 	if (ptrstring_cpy == NULL)
 		return (NULL);
 
