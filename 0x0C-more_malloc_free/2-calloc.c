@@ -10,13 +10,18 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *array;
+	size_t i;
 
-	if (size == 0)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 
 	array = malloc(nmemb * size);
 	if (array == NULL)
 		return (NULL);
+
+	/* Initialize the allocated memory to zero */
+	for (i = 0; i < nmemb * size; i++)
+		*((char *)array + i) = '\0';
 
 	return (array);
 }
