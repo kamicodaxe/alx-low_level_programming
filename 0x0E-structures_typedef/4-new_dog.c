@@ -2,33 +2,35 @@
 #include <stdlib.h>
 
 /**
- * _strdup - Duplicates a string in memory.
- * @str: String to duplicate.
- * Return: Pointer to the duplicated string. NULL if str is NULL or if memory
- * allocation fails.
+ * str_len - Calculates the length of a string.
+ * @s: The input string.
+ * Return: The length of the string.
  */
-char *_strdup(char *str)
+int str_len(char *s)
 {
-	char *copy;
-	size_t len = 0, i;
+	int len = 0;
 
-	if (str == NULL)
-		return (NULL);
-
-	while (str[len] != '\0')
+	while (s[len] != '\0')
 		len++;
 
-	/* Allocate memory for copy */
-	copy = malloc(len + 1);
-	if (copy == NULL)
-		return (NULL);
+	return (len);
+}
 
-	for (i = 0; i < len; i++)
-		copy[i] = str[i];
+/**
+ * str_cpy - Copies a string from source to destination.
+ * @dest: The destination string.
+ * @src: The source string.
+ */
+void str_cpy(char *dest, char *src)
+{
+	int i = 0;
 
-	copy[len + 1] = '\0';
-
-	return (copy);
+	while (src != NULL && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 }
 
 /**
@@ -45,17 +47,23 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (new == NULL)
 		return (NULL);
 
-	new->name = _strdup(name);
+	new->name = malloc(str_len(name) + 1);
 	if (new->name == NULL)
+	{
+		free(new);
 		return (NULL);
+	}
 
-	new->owner = _strdup(owner);
+	new->owner = malloc(str_len(owner) + 1);
 	if (new->owner == NULL)
 	{
+		free(new);
 		free(new->name);
 		return (NULL);
 	}
 
+	str_cpy(new->name, name);
+	str_cpy(new->owner, owner);
 	new->age = age;
 
 	return (new);
