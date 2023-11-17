@@ -7,24 +7,22 @@
  *
  * Return: The ROT13-encoded character.
  */
-int encodeChar(char c)
+char encodeChar(char c)
 {
-	char dictionary[] = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
-                        "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	int i = 0;
-
-	/* Check if the character is an alphabet (lowercase or uppercase) */
+	/*Check if the character is an alphabet (lowercase or uppercase)*/
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 	{
-		while (dictionary[i] != c)
-			i++;
+		int alphabetSize = 26;
 
-		/* Return the ROT13-encoded character */
-		return dictionary[i + 13];
+		/* Determine the base value for the character type (lowercase or uppercase) */
+		int base = (c >= 'a' && c <= 'z') ? 'a' : 'A';
+
+		/* ROT13 encoding */
+		return (((c - base + 13) % alphabetSize) + base);
 	}
 
-	/* If the character is not an alphabet, return the character as it is */
-	return c;
+	/*If the character is not an alphabet, return the character as it is*/
+	return (c);
 }
 
 /**
@@ -47,4 +45,3 @@ char *rot13(char *str)
 	/* Return the ROT13-encoded string */
 	return str;
 }
-
