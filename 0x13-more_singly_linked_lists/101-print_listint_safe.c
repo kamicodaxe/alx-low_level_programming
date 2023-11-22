@@ -16,7 +16,7 @@ size_t print_listint_safe(const listint_t *head)
 		if (!head)
 			exit(98);
 
-		printf("%p %d\n", head, head->n);
+		printf("%p %d\n", (void *)head, head->n);
 		head = head->next;
 		len++;
 	}
