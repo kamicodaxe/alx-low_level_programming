@@ -2,21 +2,21 @@
 
 /**
  * print_listint_safe - Prints a linked list
- * @h: Linked list
+ * @head: Linked list
  *
  * Return: The length of the list
  */
-size_t print_listint_safe(const listint_t *h)
+size_t print_listint_safe(const listint_t *head)
 {
 	size_t len = 0;
 
-	while (h != NULL)
+	while (head != NULL)
 	{
-		if (!h)
+		if (!head)
 			exit(98);
 
-		printf("%d\n", h->n);
-		h = h->next;
+		printf("%d\n", head->n);
+		head = head->next;
 		len++;
 	}
 
