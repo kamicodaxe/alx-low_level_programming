@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * print_listint_safe - Prints a linked list
@@ -15,7 +16,7 @@ size_t print_listint_safe(const listint_t *head)
 		if (!head)
 			exit(98);
 
-		printf("%d\n", head->n);
+		printf("%p %d\n", head, head->n);
 		head = head->next;
 		len++;
 	}
