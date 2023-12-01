@@ -5,16 +5,6 @@
 #include <unistd.h>
 
 /**
- * print_error - Print an error message to stderr.
- * @message: The error message to print.
- * @dest_fd: The file descriptor where the write operation failed.
- */
-void print_error(int dest_fd, const char *message)
-{
-	dprintf(STDERR_FILENO, message, dest_fd);
-}
-
-/**
  * main - Copies the content of one file to another file.
  *
  * @argc: The number of command-line arguments.
@@ -42,12 +32,12 @@ int main(int argc, char **argv)
 	dest_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (dest_fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		close(src_fd);
 		exit(99);
 	}
 
-	result = copy_file(src_fd, dest_fd);
+	result = copy_file(src_fd, dest_fd, argv);
 
 	if (close(src_fd) == -1)
 	{
@@ -69,10 +59,11 @@ int main(int argc, char **argv)
  *
  * @source_fd: The file descriptor of the source file.
  * @dest_fd: The file descriptor of the destination file.
+ * @argv: Arguments passed when calling program
  *
  * Return: 0 on success, -1 on failure, or 100 on a read error.
  */
-int copy_file(int source_fd, int dest_fd)
+int copy_file(int source_fd, int dest_fd, char **argv)
 {
 	char *buffer;
 	ssize_t bytes_read, bytes_written;
@@ -91,7 +82,7 @@ int copy_file(int source_fd, int dest_fd)
 		if (bytes_written == -1 || bytes_written != bytes_read)
 		{
 			free(buffer);
-			print_error(dest_fd, "Error: Can't write to file descriptor %d\n");
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
 			exit(-1);
 		}
 	}
@@ -99,7 +90,7 @@ int copy_file(int source_fd, int dest_fd)
 	if (bytes_read == -1)
 	{
 		free(buffer);
-		print_error(source_fd, "Error: Can't read from file descriptor %d\n");
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
 		exit(100);
 	}
 
