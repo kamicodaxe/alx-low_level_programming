@@ -1,0 +1,9 @@
+./0-print_dlistint.c
+./1-dlistint_len.c
+./2-add_dnodeint.c
+./3-add_dnodeint_end.c
+./4-free_dlistint.c
+./tests/0-main.c
+./tests/2-main.c
+./tests/3-main.c
+./tests/4-main.c
